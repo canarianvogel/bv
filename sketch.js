@@ -61,19 +61,19 @@ player = createSprite(displayWidth-1150, displayHeight-300, 50, 50);
    player.debug = true
    player.setCollider("rectangle",0,0,300,300)
 heart1=createSprite(displayWidth-150,40,20,20)
-heart1.viseble=false
-heart1.addImage("heart1",heart1.heart1Img)
+heart1.visible=false
+heart1.addImage("heart1",heart1Img)
 heart1.scale=0.4
 
 heart2=createSprite(displayWidth-100,40,20,20)
-heart2.viseble=false
-heart2.addImage("heart1",heart2.heart2Img)
+heart2.visible=false
+heart2.addImage("heart1",heart2Img)
 heart2.scale=0.4
 
 
 heart3=createSprite(displayWidth-150,40,20,20)
-heart3.viseble=false
-heart3.addImage("heart1",heart1.heart1Img)
+heart3.visible=false
+heart3.addImage("heart1",heart1Img)
 balasGroup=new Group()
 zombieGroup=new Group()
 }
@@ -82,19 +82,19 @@ background(0)
 if(gameState==="início"){
 
   if(life===3){
-heart3.viseble=true
-heart2.viseble=false
-heart1.viseble=false
+heart3.visible=true
+heart2.visible=false
+heart1.visible=false
   }
   if(life===2){
-    heart2.viseble=true
-    heart3.viseble=false
-    heart1.viseble=false
+    heart2.visible=true
+    heart3.visible=false
+    heart1.visible=false
       }
       if(life===1){
-        heart1.viseble=true
-        heart2.viseble=false
-        heart3.viseble=false
+        heart1.visible=true
+        heart2.visible=false
+        heart3.visible=false
           }
           if(life===0){
             gameState="fim"
@@ -127,7 +127,7 @@ heart1.viseble=false
 
 
               }
-              if(balas==0){
+              if(bullets==0){
               
                 gameState="fim"
                 lose.play()
@@ -158,11 +158,11 @@ heart1.viseble=false
 }
 drawSprites()
 textSize(20)
-Fill("black")
+fill("black")
 text("balas="+bullets,displayWidth-210,displayHeight/2-250)
 text("pontuação="+score,displayWidth-200,displayHeight/2-220)
 text("vidas="+life,displayWidth-200,displayHeight/2-280)
-if(gameState==fim){
+if(gameState===fim){
 textSize(100)
 fill("black")
 text("game over",400,400)
