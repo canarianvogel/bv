@@ -74,7 +74,7 @@ heart2.scale=0.4
 heart3=createSprite(displayWidth-150,40,20,20)
 heart3.visible=false
 heart3.addImage("heart1",heart1Img)
-balasGroup=new Group()
+bulletsGroup=new Group()
 zombieGroup=new Group()
 }
 function draw(){
@@ -114,7 +114,7 @@ heart1.visible=false
               
             bala=createSprite(displayWidth-1150,player.y-30,20,10)
             bala.velocityX=20
-            balasGroup.add(bala)
+            bulletsGroup.add(bala)
             player.depth=bala.depth
             bullets=bullets-1
             player.addImage(shooter_shooting)
@@ -132,12 +132,12 @@ heart1.visible=false
                 gameState="fim"
                 lose.play()
               }
-              if(balasGroup.isTouching(zombieGroup)){
+              if(bulletsGroup.isTouching(zombieGroup)){
 
                 for(var i=0;i<zombieGroup.length;i++){
-                  if(zombieGroup[i].isTouching(balasGroup)){
+                  if(zombieGroup[i].isTouching(bulletsGroup)){
                     zombieGroup[i].destroy()
-                    balasGroup[i].destroy()
+                    bulletsGroup[i].destroy()
                     lose.play()
                     score=score+1
 
@@ -156,20 +156,21 @@ heart1.visible=false
 
               }
 }
+zombie1()
 drawSprites()
 textSize(20)
 fill("black")
 text("balas="+bullets,displayWidth-210,displayHeight/2-250)
 text("pontuação="+score,displayWidth-200,displayHeight/2-220)
 text("vidas="+life,displayWidth-200,displayHeight/2-280)
-if(gameState===fim){
+if(gameState==="fim"){
 textSize(100)
 fill("black")
 text("game over",400,400)
 player.destroy();
 zombieGroup.destroyEach()
 }
-if(gameState==conquista){
+if(gameState==="conquista"){
   textSize(100)
   fill("black")
   text("você ganhou",400,400)
@@ -177,7 +178,7 @@ if(gameState==conquista){
   zombieGroup.destroyEach()
   }
 }
-  function zombie(){
+  function zombie1(){
 if(frameCount%50===0){
 zombie=createSprite(random(500,1100),random(100,500),40,40)
 zombie.addImage(zombieImg)
